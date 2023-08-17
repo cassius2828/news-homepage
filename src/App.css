@@ -203,11 +203,18 @@ p {
 
 .section-3-flex {
   display: flex;
+  /* border: solid 2px lime; */
 }
 
 .section-3-flex > div {
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: center;
   margin: 1rem 0;
   width: 50%;
+  /* border: solid 2px red; */
+
 }
 
 .section-3-text-container {
@@ -327,7 +334,7 @@ footer {
   .section-3-flex > div {
     display: flex;
     flex-direction: column;
-    align-items: center;
+   
     justify-content: center;
   }
 
