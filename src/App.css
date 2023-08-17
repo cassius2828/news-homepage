@@ -1,38 +1,246 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Source Code Pro';
+}
+
+p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* apply to all styles */
+
+.main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  top: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: solid 2px lime; */
+  width: 100%;
+  height: 4rem;
+  background-color: #fdf0dd;
+}
+
+.navbar img {
+  width: 5rem;
+  margin-left: 1.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.navbar h1 {
+  margin-right: auto;
+  font-family: 'Berkshire Swash';
+  color: rgb(229, 161, 35);
+}
+
+.navbar span {
+  font-size: 1.25rem;
+  font-family: 'Berkshire Swash';
+  color: black
+}
+
+/* hamburger */
+#hamburger {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.5rem;
+  z-index: 3;
+  transition: all 0.2s;
+  height: 3rem;
+}
+
+#hamburger::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  transition: all 0.2s;
+  background-color: black;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 0 #000000;
+}
+
+#hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  transition: all 0.2s;
+  background-color: black;
+  transform: translateY(10px);
+}
+
+.hamburger-container div,
+.close-container div {
+  width: 2rem;
+  height: 0.2rem;
+  margin: 0.2rem;
+}
+
+.hamburger-container:hover {
+  cursor: pointer;
+}
+
+#hamburger.active::before {
+  transform: translateY(0px) rotate(45deg);
+  box-shadow: 0 0 0 #000000;
+}
+
+#hamburger.active::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+/* break */
+
+.dropdown {
+  transition: all 0.1s ease-out;
+  top: 0;
+  position: fixed;
+  background-color: #fdf0dd;
+  height: 100vw;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  z-index: 1;
+  -webkit-box-shadow: 0px 7px 21px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 7px 21px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 7px 21px -4px rgba(0, 0, 0, 0.75);
+}
+
+.dropdown ul li,
+.dropdown a {
+  color: rgb(84, 76, 70);
+  list-style: none;
+  text-decoration: none;
+  margin: 2rem 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dropdown a:hover {
+  color: orange;
+  transition: all 0.1s ease-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/** main content section */
+/*! section 1 */
+.content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+margin-top: 4rem;
+width: 95%;
 }
 
-.App-link {
-  color: #61dafb;
+#main-img {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.article-title {
+  font-size: 3.75rem;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.tachyon-btn {
+  background-color: orange;
+  margin: 1rem 0;
+}
+/*! section 2 */
+
+.section-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background-color: black;
+  color: whitesmoke;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.section-2 h2 {
+  color: orange;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.section-2 hr {
+  width: 90%;
+  margin: 1.5rem 0;
+}
+
+.section-2 p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+/*! section 3 */
+
+.section-3 img {
+  width: 100%;
+}
+
+.section-3-flex {
+  display: flex;
+  /* border: solid 2px lime; */
+}
+
+.section-3-flex > div {
+border: solid 2px red;
+margin: 1rem 0;
+width: 50%;
+}
+
+.section-3-text-container {
+  margin-left: 1rem;
+}
+
+.section-3-text-container h1 {
+  margin-left: 1.5rem;
+  color: rgba(200, 142, 101, 0.79);
+}
+
+.section-3-text-container p, .section-3-text-container h3 {
+  margin: 1rem 0 0 .5rem;
+}
+
+/* footer section */
+
+footer {
+  display: flex;
+  margin: 2rem;
+  justify-content: space-evenly;
+}
+
+.icon {
+ margin-left: 2rem;
+ position: relative;
+ top:-.25rem;
+ color: black
+}
+
+.icon:hover {
+  color: orange;
+  cursor: pointer;
 }
