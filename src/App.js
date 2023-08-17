@@ -5,10 +5,6 @@ import tachyons from "tachyons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-
-
-
-
 function App() {
   const [dropdown, setDropdown] = useState(false);
   const toggleMenu = () => {
@@ -16,9 +12,16 @@ function App() {
     hamburger.classList.toggle("active");
     setDropdown(!dropdown);
   };
+
+  const handleAlert = () => {
+    alert(
+      `Normally, this would take you to the desired section of the website, but this content does not exist yet. Try the 1st, 2nd, or last link!`
+    );
+  };
+
   return (
     <div className="main-container">
-      <Navbar onToggle={toggleMenu} dropdown={dropdown} />
+      <Navbar onToggle={toggleMenu} dropdown={dropdown} onAlert={handleAlert} />
       <Content />
     </div>
   );
@@ -26,14 +29,44 @@ function App() {
 
 export default App;
 
-export const Navbar = ({ dropdown, onToggle }) => {
+export const Navbar = ({ dropdown, onToggle, onAlert }) => {
   return (
     <div className="navbar">
       <img
         id="main-logo"
         src={mainLogo}
         alt="cool orange sun logo (trust me bro)"
-      /> <h1 className="header">Citrus Sun: <span>your source for daily tech news</span></h1>
+      />
+
+      <h1 className="header">
+        Citrus Sun{" "}
+        <span className="extra-title">your source for daily tech news</span>
+      </h1>
+
+      <div className="desktop-navlinks">
+        <ul className="ul-flex">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#new">New</a>
+          </li>
+          <li>
+            <a onClick={onAlert} href="#popular">
+              Popular
+            </a>
+          </li>
+          <li>
+            <a onClick={onAlert} href="#trending">
+              Trending
+            </a>
+          </li>
+          <li>
+            <a href="#categories">Categories</a>
+          </li>
+        </ul>
+      </div>
+
       {dropdown ? (
         <div className="dropdown">
           <ul>
@@ -44,10 +77,14 @@ export const Navbar = ({ dropdown, onToggle }) => {
               <a href="#new">New</a>
             </li>
             <li>
-              <a href="#popular">Popular</a>
+              <a onClick={onAlert} href="#popular">
+                Popular
+              </a>
             </li>
             <li>
-              <a href="#trending">Trending</a>
+              <a onClick={onAlert} href="#trending">
+                Trending
+              </a>
             </li>
             <li>
               <a href="#categories">Categories</a>
@@ -69,26 +106,32 @@ export const Content = () => {
   return (
     <div id="home" className="content-container">
       {/* //!section 1 */}
-      <section>
+      <section className="section-1">
         {" "}
-        <img
-          id="main-img"
-          src="https://img.freepik.com/free-vector/gradient-abstract-dynamic-shapes-background_23-2149121731.jpg"
-          alt="mesmerizing abstract background"
-        />
-        <h1 className="article-title">The Bright Future of Web 3.0?</h1>
-        <p>
-          Lorem ipsum dolor, hit dsnkl sdnjf dfusjf sbajkda sit amet consectetur
-          adipisicing elit. Officiis ut nobis saepe, alias cupiditate
-          repellendus impedit. Ipsam quia quisquam eaque adipisci architecto
-          temporibus dicta assumenda eos fuga ad, illum fugit.
-        </p>
-        <a
-          class=" tachyon-btn f6 link dim ph3 pv2 mb2 dib white bg-near"
-          href="#0"
-        >
-          Read More
-        </a>
+        <div className="img-container">
+          <img
+            id="main-img"
+            src="https://img.freepik.com/free-vector/gradient-abstract-dynamic-shapes-background_23-2149121731.jpg"
+            alt="mesmerizing abstract background"
+          />
+        </div>
+        <div className="section-1-title-container">
+          <h1 className="article-title">The Bright Future of Web 3.0?</h1>
+        </div>
+        <div className="section-1-text-container">
+          <p>
+            Lorem ipsum dolor, hit dsnkl sdnjf dfusjf sbajkda sit amet
+            consectetur adipisicing elit. Officiis ut nobis saepe, alias
+            cupiditate repellendus impedit. Ipsam quia quisquam eaque adipisci
+            architecto temporibus dicta assumenda eos fuga ad, illum fugit.
+          </p>
+          <a
+            class=" tachyon-btn f6 link dim ph3 pv2 mb2 dib white bg-near"
+            href="#0"
+          >
+            Read More
+          </a>
+        </div>
       </section>
 
       {/*//! section 2 */}
@@ -118,6 +161,12 @@ export const Content = () => {
             officiis non recusandae voluptates corporis!
           </p>
         </div>
+        <div className="extra-img">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/021/495/254/original/digital-technology-banner-purple-orange-pink-background-concept-cyber-technology-abstract-hi-tech-innovation-future-data-internet-network-ai-big-data-lines-dots-connection-illustration-free-vector.jpg"
+            alt=""
+          />
+        </div>
       </section>
       {/*//! section 3 */}
       <section id="categories" className="section-3">
@@ -129,7 +178,6 @@ export const Content = () => {
               alt="new computer"
             />
           </div>
-
           <div className="section-3-text-container">
             <h1>01</h1>
             <h3>Reviving Retro PCs</h3>
