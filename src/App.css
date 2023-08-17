@@ -203,6 +203,9 @@ p {
 
 .section-3-flex {
   display: flex;
+  background-color: whitesmoke;
+  margin: 1rem 0;
+  padding: 0 .5rem;
   /* border: solid 2px lime; */
 }
 
