@@ -10,7 +10,7 @@ function App() {
   const toggleMenu = () => {
     const hamburger = document.getElementById("hamburger");
     hamburger.classList.toggle("active");
-    setDropdown(!dropdown);
+    setDropdown( current => !current);
   };
 
   const handleAlert = () => {
